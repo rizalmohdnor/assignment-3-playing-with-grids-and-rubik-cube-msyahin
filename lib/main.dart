@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: '2x2 Rubik\'s Cube',
       theme: ThemeData(
-          primarySwatch: Colors.blue,
+        primarySwatch: Colors.blue,
       ),
       home: const CubeScreen(),
     );
@@ -238,7 +238,7 @@ class CubeState {
     for (int i = 0; i < 2; i++) {
       // Create 2 random rotations
       int randomRotation =
-      random.nextInt(rotations.length); // Generate a random index
+          random.nextInt(rotations.length); // Generate a random index
       rotations[randomRotation](); // Execute the corresponding rotation
     }
   }
@@ -369,9 +369,9 @@ class _CubeScreenState extends State<CubeScreen> {
       appBar: AppBar(
         title: Center(
             child: const Text(
-              '2x2 Rubik\'s Cube',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            )),
+          '2x2 Rubik\'s Cube',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        )),
       ),
       body: Center(
         child: Column(
@@ -379,7 +379,10 @@ class _CubeScreenState extends State<CubeScreen> {
           children: [
             Column(
               children: [
-                const Text('Up', style: TextStyle(fontWeight: FontWeight.bold),),
+                const Text(
+                  'Up',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 SizedBox(
                   height: 100,
                   width: 100,
@@ -394,7 +397,10 @@ class _CubeScreenState extends State<CubeScreen> {
                   padding: const EdgeInsets.all(1.0),
                   child: Column(
                     children: [
-                      const Text('Left', style: TextStyle(fontWeight: FontWeight.bold),),
+                      const Text(
+                        'Left',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       SizedBox(
                         height: 100,
                         width: 100,
@@ -407,7 +413,10 @@ class _CubeScreenState extends State<CubeScreen> {
                   padding: const EdgeInsets.all(1.0),
                   child: Column(
                     children: [
-                      const Text('Front', style: TextStyle(fontWeight: FontWeight.bold),),
+                      const Text(
+                        'Front',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       SizedBox(
                         height: 100,
                         width: 100,
@@ -420,7 +429,10 @@ class _CubeScreenState extends State<CubeScreen> {
                   padding: const EdgeInsets.all(1.0),
                   child: Column(
                     children: [
-                      const Text('Right', style: TextStyle(fontWeight: FontWeight.bold),),
+                      const Text(
+                        'Right',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       SizedBox(
                         height: 100,
                         width: 100,
@@ -433,7 +445,10 @@ class _CubeScreenState extends State<CubeScreen> {
             ),
             Column(
               children: [
-                const Text('Down', style: TextStyle(fontWeight: FontWeight.bold),),
+                const Text(
+                  'Down',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 SizedBox(
                   height: 100,
                   width: 100,
@@ -443,7 +458,10 @@ class _CubeScreenState extends State<CubeScreen> {
             ),
             Column(
               children: [
-                const Text('Rear', style: TextStyle(fontWeight: FontWeight.bold),),
+                const Text(
+                  'Rear',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 SizedBox(
                   height: 100,
                   width: 100,
@@ -459,6 +477,51 @@ class _CubeScreenState extends State<CubeScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            // Row for top (U, U') and bottom (D, D') rotations
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: rotateTop,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white,
+                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  child: const Text('Top'),
+                ),
+                ElevatedButton(
+                  onPressed: rotateTopPrime,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white,
+                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  child: const Text("Top'"),
+                ),
+                const SizedBox(width: 10),
+                ElevatedButton(
+                  onPressed: rotateBottom,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white,
+                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  child: const Text('Down'),
+                ),
+                ElevatedButton(
+                  onPressed: rotateBottomPrime,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white,
+                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  child: const Text("Down'"),
+                ),
+              ],
+            ),
+            const SizedBox(height: 5),
+            // Row for front (F, F') and rear (B, B') rotations
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -467,150 +530,105 @@ class _CubeScreenState extends State<CubeScreen> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold),
+                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  child: const Text('F'),
+                  child: const Text('Front'),
                 ),
-                ElevatedButton(
-                  onPressed: rotaterear,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold),
-                  ),
-                  child: const Text('B'),
-                ),
-                ElevatedButton(
-                  onPressed: rotateTop,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold),
-                  ),
-                  child: const Text('U'),
-                ),
-                ElevatedButton(
-                  onPressed: rotateBottom,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold),
-                  ),
-                  child: const Text('D'),
-                ),
-                ElevatedButton(
-                  onPressed: rotateLeft,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold),
-                  ),
-                  child: const Text('L'),
-                ),
-                ElevatedButton(
-                  onPressed: rotateRight,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold),
-                  ),
-                  child: const Text('R'),
-                ),
-              ],
-            ),
-            SizedBox(height: 3),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
                 ElevatedButton(
                   onPressed: rotateFrontPrime,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold),
+                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  child: const Text("F'"),
+                  child: const Text("Front'"),
+                ),
+                const SizedBox(width: 10),
+                ElevatedButton(
+                  onPressed: rotaterear,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white,
+                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  child: const Text('Rear'),
                 ),
                 ElevatedButton(
                   onPressed: rotaterearPrime,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold),
+                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  child: const Text("B'"),
+                  child: const Text("Rear'"),
                 ),
+              ],
+            ),
+            const SizedBox(height: 5),
+            // Row for left (L, L') and right (R, R') rotations
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
                 ElevatedButton(
-                  onPressed: rotateTopPrime,
+                  onPressed: rotateLeft,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold),
+                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  child: const Text("U'"),
-                ),
-                ElevatedButton(
-                  onPressed: rotateBottomPrime,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold),
-                  ),
-                  child: const Text("D'"),
+                  child: const Text('Left'),
                 ),
                 ElevatedButton(
                   onPressed: rotateLeftPrime,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold),
+                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  child: const Text("L'"),
+                  child: const Text("Left'"),
+                ),
+                const SizedBox(width: 10),
+                ElevatedButton(
+                  onPressed: rotateRight,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white,
+                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  child: const Text('Right'),
                 ),
                 ElevatedButton(
                   onPressed: rotateRightPrime,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold),
+                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  child: const Text("R'"),
+                  child: const Text("Right'"),
                 ),
               ],
             ),
-            SizedBox(height: 3),
+            const SizedBox(height: 10),
+            // Row for shuffle and reset
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
                   onPressed: shuffle,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
+                    backgroundColor: Colors.black,
                     foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold),
+                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   child: const Text('Shuffle'),
                 ),
+                const SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: reset,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
+                    backgroundColor: Colors.black,
                     foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold),
+                    textStyle: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   child: const Text('Reset'),
                 ),
